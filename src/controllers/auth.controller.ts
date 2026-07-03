@@ -56,7 +56,7 @@ export class AuthController {
                     role: user.role
                 }
             });
-        } catch (error) {
+        } catch (error: any) {
             console.error("Registration error:", error);
             res.status(500).json({ message: "Error during registration", error: error.message });
         }
@@ -140,7 +140,7 @@ export class AuthController {
                     isActive: user.isActive,
                 },
             });
-        } catch (error) {
+        } catch (error: any) {
             console.error("❌ Login error details:", error);
             res.status(500).json({
                 message: "Error during login",

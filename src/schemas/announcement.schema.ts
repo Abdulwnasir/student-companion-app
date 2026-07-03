@@ -8,7 +8,10 @@ export const createAnnouncementSchema = z.object({
     deadline: z.string().refine((date) => !isNaN(Date.parse(date)), "Invalid date format"),
     departmentId: z.string().optional(),
     batchId: z.string().optional(),
-    sectionId: z.string().optional()
+    sectionId: z.string().optional(),
+    scope: z.enum(["UNIVERSITY", "DEPARTMENT", "BATCH", "SECTION"]).optional(),
+    targetId: z.string().optional(),
+    isPublic: z.boolean().optional()
 });
 
 export const announcementSchema = createAnnouncementSchema.extend({

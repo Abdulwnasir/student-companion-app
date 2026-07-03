@@ -24,7 +24,7 @@ router.post("/test-sms", async (req, res) => {
             phoneNumber,
             timestamp: new Date().toISOString()
         });
-    } catch (error) {
+    } catch (error: any) {
         console.error("Test SMS error:", error);
         res.status(500).json({
             success: false,
@@ -50,7 +50,7 @@ router.get("/sms-status", async (req, res) => {
             twilioPhoneNumber: process.env.TWILIO_PHONE_NUMBER || null,
             mode: isConfigured ? "production" : "development (logging only)"
         });
-    } catch (error) {
+    } catch (error: any) {
         res.status(500).json({
             success: false,
             message: "Error checking SMS status",

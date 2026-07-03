@@ -19,6 +19,9 @@ export class StudyMaterial {
     fileType!: string;
 
     @Column({ nullable: true })
+    description?: string;
+
+    @Column({ nullable: true })
     departmentId?: string;
 
     @Column({ nullable: true })

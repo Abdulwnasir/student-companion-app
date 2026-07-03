@@ -112,7 +112,7 @@ export class DiscussionController {
                 message: "Discussion group created successfully",
                 group: savedGroup
             });
-        } catch (error) {
+        } catch (error: any) {
             console.error('❌ Error creating group:', error);
             res.status(500).json({ 
                 success: false, 
@@ -311,7 +311,7 @@ export class DiscussionController {
 
             console.log(`✅ Returning ${visibleGroups.length} visible groups`);
             res.json(visibleGroups);
-        } catch (error) {
+        } catch (error: any) {
             console.error('❌ Error fetching groups:', error);
             res.status(500).json({ 
                 message: "Error fetching groups",
@@ -716,7 +716,7 @@ export class DiscussionController {
                 visibleCount: visibilityResults.filter(g => g.visible).length,
                 groups: visibilityResults
             });
-        } catch (error) {
+        } catch (error: any) {
             console.error('Debug error:', error);
             res.status(500).json({ error: error.message });
         }

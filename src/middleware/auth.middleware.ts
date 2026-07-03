@@ -16,8 +16,13 @@ export const authenticateJWT = (req: AuthRequest, res: Response, next: NextFunct
 
     if (authHeader) {
         const token = authHeader.split(" ")[1];
+        const secret = process.env.JWT_SECRET;
 
-        jwt.verify(token, process.env.JWT_SECRET, (err, user: any) => {
+        if (!secret) {
+            return res.status(500).json({ message: "JWT secret not configured" });
+        }
+
+        jwt.verify(token, secret, (err, user: any) => {
             if (err) {
                 return res.sendStatus(403);
             }

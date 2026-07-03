@@ -162,7 +162,7 @@ export class MaterialController {
             console.log(`Returning ${filteredMaterials.length} materials`);
             
             res.json(filteredMaterials);
-        } catch (error) {
+        } catch (error: any) {
             console.error('Error fetching materials:', error);
             res.status(500).json({ 
                 message: "Error fetching materials", 
@@ -349,7 +349,7 @@ export class MaterialController {
                 visibleCount: visibilityResults.filter(r => r.visible).length,
                 materials: visibilityResults
             });
-        } catch (error) {
+        } catch (error: any) {
             console.error('Debug error:', error);
             res.status(500).json({ error: error.message });
         }

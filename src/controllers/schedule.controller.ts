@@ -57,10 +57,11 @@ export class ScheduleController {
                 }
             }
 
+            const body = req.body as Partial<Schedule>;
             const schedule = scheduleRepository.create({
-                ...req.body,
+                ...body,
                 userId: req.user.id,
-            });
+            }) as Schedule;
             await scheduleRepository.save(schedule);
             
             // Send notification

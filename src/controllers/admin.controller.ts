@@ -95,9 +95,9 @@ export class AdminController {
             user.role = role as UserRole;
             
             if (role === UserRole.COORDINATOR) {
-                user.departmentId = departmentId || null;
+                user.departmentId = departmentId || undefined;
             } else {
-                user.departmentId = null;
+                user.departmentId = undefined;
             }
             
             await userRepository.save(user);

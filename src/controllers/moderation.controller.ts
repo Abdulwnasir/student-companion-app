@@ -247,7 +247,7 @@ export class ModerationController {
                     } else {
                         results.push({ id: requestId, success: false, reason: "Not found or already reviewed" });
                     }
-                } catch (err) {
+                } catch (err: any) {
                     results.push({ id: requestId, success: false, reason: err.message });
                 }
             }

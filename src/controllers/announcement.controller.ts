@@ -51,7 +51,7 @@ export class AnnouncementController {
                 targetId: targetId || null,
                 isPublic: isPublic || false,
                 creatorId: req.user.id
-            });
+            } as Partial<Announcement>);
 
             await announcementRepository.save(announcement);
 
@@ -106,11 +106,14 @@ export class AnnouncementController {
 
             // Check for JWT token in header
             const authHeader = req.headers.authorization;
-            let user = null;
+            let user: { id?: string } | null = null;
             if (authHeader) {
                 const token = authHeader.split(" ")[1];
                 try {
-                    user = jwt.verify(token, process.env.JWT_SECRET || "fallback_secret");
+                    const verified = jwt.verify(token, process.env.JWT_SECRET || "fallback_secret");
+                    if (typeof verified === "object" && verified !== null && "id" in verified) {
+                        user = verified as { id?: string };
+                    }
                 } catch (err) {
                     console.log('Invalid token for announcements');
                 }

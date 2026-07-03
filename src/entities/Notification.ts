@@ -5,6 +5,12 @@ export enum NotificationType {
     INFO = "INFO",
     ALERT = "ALERT",
     REMINDER = "REMINDER",
+    ASSIGNMENT = "ASSIGNMENT",
+    SCHEDULE = "SCHEDULE",
+    AI = "AI",
+    DISCUSSION = "DISCUSSION",
+    MATERIAL = "MATERIAL",
+    WELCOME = "WELCOME",
 }
 
 @Entity("notifications")
@@ -12,12 +18,11 @@ export class Notification {
     @PrimaryGeneratedColumn("uuid")
     id!: string;
 
-    @Column({
-        type: "enum",
-        enum: NotificationType,
-        default: NotificationType.INFO,
-    })
-    type!: NotificationType;
+    @Column()
+    title!: string;
+
+    @Column()
+    type!: string;
 
     @Column()
     message!: string;
