@@ -13,7 +13,10 @@
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "strictPropertyInitialization": false
+    "strictPropertyInitialization": false,
+    "incremental": true,
+    "tsBuildInfoFile": "./dist/.tsbuildinfo",
+    "maxNodeModuleJsDepth": 1
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
