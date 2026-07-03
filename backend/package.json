@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "esbuild ../src/index.ts --bundle --platform=node --target=node20 --outdir=dist --format=cjs",
+    "build": "esbuild ../src/index.ts --bundle --platform=node --target=node20 --outdir=dist --format=cjs --external:express --external:cors --external:dotenv --external:helmet --external:morgan --external:reflect-metadata --external:typeorm --external:zod --external:pg --external:class-transformer --external:multer --external:node-cron --external:jsonwebtoken --external:bcrypt --external:bcryptjs --external:@google/generative-ai",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-sms": "node test-sms.js",
