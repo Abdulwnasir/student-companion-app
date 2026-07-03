@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "build": "tsc",
+    "build": "esbuild src/index.ts src --platform=node --target=node20 --outdir=dist --format=cjs",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-sms": "node test-sms.js",
@@ -46,6 +46,7 @@
     "@types/multer": "^2.0.0",
     "@types/node": "^25.6.0",
     "@types/node-cron": "^3.0.11",
+    "esbuild": "^0.21.0",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
