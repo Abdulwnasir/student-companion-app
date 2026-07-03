@@ -8,6 +8,7 @@
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "moduleResolution": "node",
@@ -16,7 +17,12 @@
     "strictPropertyInitialization": false,
     "incremental": true,
     "tsBuildInfoFile": "./dist/.tsbuildinfo",
-    "maxNodeModuleJsDepth": 1
+    "maxNodeModuleJsDepth": 1,
+    "declaration": false,
+    "sourceMap": false,
+    "inlineSourceMap": false,
+    "inlineSources": false,
+    "removeComments": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
