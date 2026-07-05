@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "build": "echo \"Build skipped - using ts-node for runtime\"",
-    "start": "ts-node src/index.ts",
+    "start": "ts-node --transpile-only src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-sms": "node test-sms.js",
     "seed:admin": "ts-node src/seeds/admin.seed.ts",
