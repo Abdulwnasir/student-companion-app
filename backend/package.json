@@ -5,41 +5,25 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-<<<<<<< HEAD
     "build": "tsc",
-    "start": "node dist/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "test-sms": "node test-sms.js"
-=======
-    "build": "esbuild ../src/index.ts --bundle --platform=node --target=node20 --outdir=dist --format=cjs --external:express --external:cors --external:dotenv --external:helmet --external:morgan --external:reflect-metadata --external:typeorm --external:zod --external:pg --external:class-transformer --external:multer --external:node-cron --external:jsonwebtoken --external:bcrypt --external:bcryptjs --external:@google/generative-ai",
     "start": "node dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test-sms": "node test-sms.js",
     "seed:admin": "ts-node src/seeds/admin.seed.ts",
     "seed:student": "ts-node src/seeds/student.seed.ts",
     "seed:schedule": "ts-node src/seeds/schedule.seed.ts"
->>>>>>> 3aff248c60c064d9f46fa2ef10196f95bd5215ca
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
-<<<<<<< HEAD
-    "@google/generative-ai": "^0.24.0",
-    "bcrypt": "^6.0.0",
-    "class-transformer": "^0.5.1",
-    "cors": "^2.8.6",
-    "dotenv": "^17.3.1",
-=======
     "@google/generative-ai": "^0.24.1",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.3",
     "class-transformer": "^0.5.1",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
-    "esbuild": "^0.21.0",
->>>>>>> 3aff248c60c064d9f46fa2ef10196f95bd5215ca
     "express": "^5.2.1",
     "helmet": "^8.1.0",
     "jsonwebtoken": "^9.0.3",
@@ -53,10 +37,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^6.0.0",
-<<<<<<< HEAD
-=======
     "@types/bcryptjs": "^2.4.6",
->>>>>>> 3aff248c60c064d9f46fa2ef10196f95bd5215ca
     "@types/cors": "^2.8.19",
     "@types/express": "^5.0.6",
     "@types/helmet": "^0.0.48",
