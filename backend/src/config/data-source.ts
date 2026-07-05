@@ -5,10 +5,10 @@ import dotenv from "dotenv";
 dotenv.config();
 
 export const AppDataSource = new DataSource({
-    type: "mysql",
+    type: "postgres",
     host: process.env.DB_HOST || "localhost",
-    port: parseInt(process.env.DB_PORT || "3306"),
-    username: process.env.DB_USER || "root",
+    port: parseInt(process.env.DB_PORT || "5432"),
+    username: process.env.DB_USER || "postgres",
     password: process.env.DB_PASS || "",
     database: process.env.DB_NAME || "student_companion",
     synchronize: process.env.NODE_ENV === "development",
@@ -16,9 +16,6 @@ export const AppDataSource = new DataSource({
     entities: ["src/entities/**/*.ts"],
     migrations: ["src/migrations/**/*.ts"],
     subscribers: ["src/subscribers/**/*.ts"],
-    // Additional MySQL-specific options
-    charset: "utf8mb4",
-    timezone: "Z",
-    supportBigNumbers: true,
-    bigNumberStrings: false,
+    // PostgreSQL-specific options
+    ssl: process.env.NODE_ENV === "production" ? { rejectUnauthorized: false } : false,
 });
