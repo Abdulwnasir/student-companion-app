@@ -15,7 +15,6 @@ function App() {
       
       if (token && storedUser) {
         try {
-          const parsedUser = JSON.parse(storedUser);
           // Verify token with backend
           await checkAuth();
         } catch (error) {
