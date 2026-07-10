@@ -646,7 +646,7 @@ class _DiscussionThreadPageState extends State<DiscussionThreadPage> {
       final savePath = '${tempDir.path}/$fileName';
 
       final baseUrl = dotenv.env['API_BASE_URL']?.replaceAll('/api', '') ??
-          'http://192.168.137.102:3000';
+          'https://student-companion-backend-sg21.onrender.com';
       final fullUrl = '$baseUrl$url';
 
       await sl<dio_lib.Dio>().download(fullUrl, savePath);

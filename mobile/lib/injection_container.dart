@@ -41,7 +41,7 @@ Future<void> init() async {
 
   // Get API URL
   final apiBaseUrl =
-      dotenv.env['API_BASE_URL'] ?? 'http://192.168.137.102:3000/api';
+      dotenv.env['API_BASE_URL'] ?? 'https://student-companion-backend-sg21.onrender.com/api';
 
   print('🌐 API Base URL: $apiBaseUrl');
 

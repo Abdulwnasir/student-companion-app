@@ -46,7 +46,7 @@ class _PostCardState extends State<PostCard> {
                     const SizedBox(height: 10),
                     ..._reasons.map((reason) => RadioListTile<String>(
                           title: Text(reason['label']!),
-                          value: reason['value'],
+                          value: reason['value']!,
                           groupValue: selectedReason,
                           onChanged: (value) {
                             setState(() {

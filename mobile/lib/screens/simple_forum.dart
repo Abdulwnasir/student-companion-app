@@ -97,9 +97,9 @@ class _SimpleForumState extends State<SimpleForum> {
               value: reason,
               groupValue: selectedReason,
               onChanged: (value) {
-                selectedReason = value as String;
+                selectedReason = value as String?;
                 Navigator.pop(context);
-                submitReport(postId, content, selectedReason);
+                submitReport(postId, content, selectedReason ?? 'OTHER');
               },
             )),
           ],

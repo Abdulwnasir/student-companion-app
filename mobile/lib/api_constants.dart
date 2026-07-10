@@ -1,5 +1,5 @@
 class ApiConstants {
-  static const String baseUrl = 'http://10.156.104.98:3000';
+  static const String baseUrl = 'https://student-companion-backend-sg21.onrender.com';
   static const String discussionsGroups = '/discussions/groups';
   static const String discussionsMessages = '/discussions/messages';
   static const String discussionsComments = '/discussions/comments';

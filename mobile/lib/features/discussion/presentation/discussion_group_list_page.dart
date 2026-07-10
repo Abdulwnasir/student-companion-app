@@ -10,6 +10,7 @@ import 'discussion_event.dart';
 import 'discussion_state.dart';
 import 'discussion_search_page.dart';
 import 'discussion_thread_page.dart';
+import 'package:mobile/core/network/api_config.dart';
 import '../../auth/presentation/login_page.dart'; // Add this import
 
 class DiscussionGroupListPage extends StatefulWidget {
@@ -454,7 +455,7 @@ class _DiscussionGroupListPageState extends State<DiscussionGroupListPage> {
       _showSnackBar('📤 Submitting report...', Colors.blue);
       
       final response = await http.post(
-        Uri.parse('http://192.168.137.102:3000/api/moderation/report'),
+        Uri.parse('${ApiConfig.baseUrl}/moderation/report'),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer $token',

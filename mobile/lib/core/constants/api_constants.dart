@@ -2,7 +2,7 @@
 class ApiConstants {
   // Permanent setup using ADB Reverse:
   // Run `adb reverse tcp:3000 tcp:3000` in your terminal when connected to physical device
-  static const String baseUrl = 'http://192.168.137.102:3000';
+  static const String baseUrl = 'https://student-companion-backend-sg21.onrender.com';
   
   // API Endpoints with correct paths from your backend
   static const String departments = '/api/organization/departments';

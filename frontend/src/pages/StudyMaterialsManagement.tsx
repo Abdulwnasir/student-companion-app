@@ -325,7 +325,7 @@ export const StudyMaterialsManagement = () => {
                                                 {material.fileType.toUpperCase()}
                                             </span>
                                             <a
-                                                href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000'}${material.fileUrl}`}
+                                                href={`${import.meta.env.VITE_API_BASE_URL || 'https://student-companion-backend-sg21.onrender.com'}${material.fileUrl}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="text-sm text-blue-600 hover:underline"

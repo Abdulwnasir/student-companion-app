@@ -66,7 +66,7 @@ class _StudyMaterialListPageState extends State<StudyMaterialListPage> {
     try {
       // Get base URL from environment or use default IP
       final baseUrl = dotenv.env['API_BASE_URL']?.replaceAll('/api', '') ?? 
-          'http://10.141.120.211:3000';
+          'https://student-companion-backend-sg21.onrender.com';
       final fullUrl = '$baseUrl${material.fileUrl}';
 
       final uri = Uri.parse(fullUrl);

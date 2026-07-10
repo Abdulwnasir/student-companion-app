@@ -3,7 +3,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 class ApiConfig {
   static String get baseUrl {
     // Get from .env file or use default (192.168.137.102 assumes `adb reverse tcp:3000 tcp:3000`)
-    return dotenv.env['API_BASE_URL'] ?? 'http://192.168.137.102:3000/api';
+    return dotenv.env['API_BASE_URL'] ?? 'https://student-companion-backend-sg21.onrender.com/api';
   }
   
   static String get authUrl => '$baseUrl/auth';
