@@ -32,7 +32,10 @@ const HOST = process.env.HOST || '0.0.0.0';
 // ==================== MIDDLEWARE ====================
 // Security middleware
 app.use(helmet());
-app.use(cors());
+app.use(cors({
+    origin: ['https://student-companion-app-f2df-pi.vercel.app', 'http://localhost:5173', '*'],
+    credentials: true,
+}));
 
 // Logging middleware
 app.use(morgan("dev"));
