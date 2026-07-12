@@ -47,6 +47,18 @@ app.use(express.urlencoded({ extended: true }));
 // Static files middleware
 app.use("/uploads", express.static(path.join(__dirname, "../uploads")));
 
+// Temporary public seed endpoint (remove after seeding production)
+app.post("/api/seed-organization", async (req: Request, res: Response) => {
+    try {
+        const { seedOrganization } = await import("./seeds/organization.seed");
+        await seedOrganization();
+        res.json({ message: "Organization data seeded successfully" });
+    } catch (error) {
+        console.error("Seed error:", error);
+        res.status(500).json({ message: "Error seeding organization data", error });
+    }
+});
+
 // ==================== API ROUTES ====================
 // Authentication & Users
 app.use("/api/auth", authRoutes);
