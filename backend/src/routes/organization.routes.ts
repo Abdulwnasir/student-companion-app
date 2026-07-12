@@ -5,6 +5,17 @@ import { UserRole } from "../entities/User";
 
 const router = Router();
 
+// Temporary seed endpoint (remove after seeding production)
+router.post("/seed", async (req, res) => {
+    try {
+        const { seedOrganization } = await import("../seeds/organization.seed");
+        await seedOrganization();
+        res.json({ message: "Organization data seeded successfully" });
+    } catch (error) {
+        res.status(500).json({ message: "Error seeding organization data", error });
+    }
+});
+
 // Public/Authenticated routes
 router.get("/departments", OrganizationController.getDepartments);
 router.get("/batches/:departmentId", OrganizationController.getBatches);
