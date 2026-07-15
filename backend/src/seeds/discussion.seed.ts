@@ -87,4 +87,6 @@ async function seedDiscussions() {
     }
 }
 
+export { seedDiscussions };
+
 seedDiscussions();

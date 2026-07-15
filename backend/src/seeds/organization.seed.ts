@@ -74,4 +74,6 @@ async function seedOrganization() {
     }
 }
 
+export { seedOrganization };
+
 seedOrganization();

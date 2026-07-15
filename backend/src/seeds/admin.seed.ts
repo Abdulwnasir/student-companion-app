@@ -1,6 +1,9 @@
 import "reflect-metadata";
 import { AppDataSource } from "../config/data-source";
 import { User, UserRole } from "../entities/User";
+import { Department } from "../entities/Department";
+import { Batch } from "../entities/Batch";
+import { Section } from "../entities/Section";
 import * as dotenv from "dotenv";
 import * as bcrypt from "bcrypt";
 
@@ -75,6 +78,54 @@ const seedAdmin = async () => {
             console.log("   Password: SuperAdmin123!");
         }
 
+        // Seed Organization data (Departments, Batches, Sections) if empty
+        const departmentRepository = AppDataSource.getRepository(Department);
+        const batchRepository = AppDataSource.getRepository(Batch);
+        const sectionRepository = AppDataSource.getRepository(Section);
+
+        const deptsCount = await departmentRepository.count();
+        if (deptsCount === 0) {
+            console.log("\nSeeding organization data...");
+
+            const deptsToCreate = [
+                { name: "Information Technology", description: "Information Technology Department" },
+                { name: "Computer Science", description: "Computer Science Department" },
+                { name: "Electrical Engineering", description: "Electrical Engineering Department" }
+            ];
+
+            for (const deptData of deptsToCreate) {
+                const dept = departmentRepository.create(deptData);
+                await departmentRepository.save(dept);
+                console.log(`✅ Created Department: ${dept.name}`);
+
+                // Seed some batches for this department
+                const batchesToCreate = [
+                    { name: "2025", departmentId: dept.id },
+                    { name: "2026", departmentId: dept.id }
+                ];
+
+                for (const batchData of batchesToCreate) {
+                    const batch = batchRepository.create(batchData);
+                    await batchRepository.save(batch);
+                    console.log(`   ✅ Created Batch: ${batch.name} for ${dept.name}`);
+
+                    // Seed some sections for this batch
+                    const sectionsToCreate = [
+                        { name: "Section A", batchId: batch.id },
+                        { name: "Section B", batchId: batch.id }
+                    ];
+
+                    for (const sectionData of sectionsToCreate) {
+                        const section = sectionRepository.create(sectionData);
+                        await sectionRepository.save(section);
+                        console.log(`      ✅ Created Section: ${section.name} for Batch ${batch.name}`);
+                    }
+                }
+            }
+        } else {
+            console.log("\nOrganization data already seeded.");
+        }
+
         await AppDataSource.destroy();
         
         console.log("\n📋 Summary of created users:");
@@ -90,5 +141,7 @@ const seedAdmin = async () => {
         console.error("Error during seeding admin:", error);
     }
 };
+
+export { seedAdmin };
 
 seedAdmin();

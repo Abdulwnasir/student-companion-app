@@ -85,4 +85,6 @@ async function seedMaterials() {
     }
 }
 
+export { seedMaterials };
+
 seedMaterials();

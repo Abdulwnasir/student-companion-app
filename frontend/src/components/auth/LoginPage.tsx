@@ -9,7 +9,7 @@ interface LoginPageProps {
 
 export const LoginPage = ({ message }: LoginPageProps) => {
     const [email, setEmail] = useState('admin@university.edu');
-    const [password, setPassword] = useState('AdminPass123!');
+    const [password, setPassword] = useState('Admin123!');
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const setAuth = useAuthStore((state) => state.setAuth);
