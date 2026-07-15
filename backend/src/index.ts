@@ -59,6 +59,18 @@ app.post("/api/seed-organization", async (req: Request, res: Response) => {
     }
 });
 
+// Temporary public admin seed endpoint (remove after seeding production)
+app.post("/api/seed-admin", async (req: Request, res: Response) => {
+    try {
+        const { seedAdmin } = await import("./seeds/admin.seed");
+        await seedAdmin();
+        res.json({ message: "Admin user seeded successfully" });
+    } catch (error) {
+        console.error("Seed error:", error);
+        res.status(500).json({ message: "Error seeding admin user", error });
+    }
+});
+
 // ==================== API ROUTES ====================
 // Authentication & Users
 app.use("/api/auth", authRoutes);

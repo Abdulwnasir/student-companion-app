@@ -17,6 +17,22 @@ export class AuthController {
                 return res.status(400).json({ message: "Name, email, and password are required" });
             }
 
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                return res.status(400).json({ message: "Invalid email format" });
+            }
+
+            // Password validation
+            if (password.length < 6) {
+                return res.status(400).json({ message: "Password must be at least 6 characters" });
+            }
+
+            // Name validation
+            if (name.trim().length < 2) {
+                return res.status(400).json({ message: "Name must be at least 2 characters" });
+            }
+
             const existingUser = await userRepository.findOneBy({ email });
             if (existingUser) {
                 return res.status(400).json({ message: "User already exists" });

@@ -19,11 +19,26 @@ export const LoginPage = ({ message }: LoginPageProps) => {
         setLoading(true);
         setError('');
 
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email || !emailRegex.test(email)) {
+            setError('Please enter a valid email address');
+            setLoading(false);
+            return;
+        }
+
+        // Password validation
+        if (!password || password.length < 6) {
+            setError('Password must be at least 6 characters');
+            setLoading(false);
+            return;
+        }
+
         try {
             const response = await api.post('/auth/login', { email, password });
             setAuth(response.data.user, response.data.token);
         } catch (err: any) {
-            setError(err.response?.data?.message || 'Login failed');
+            setError(err.response?.data?.message || 'Login failed. Please check your credentials.');
         } finally {
             setLoading(false);
         }
