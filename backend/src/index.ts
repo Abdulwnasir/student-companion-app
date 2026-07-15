@@ -71,6 +71,30 @@ app.post("/api/seed-admin", async (req: Request, res: Response) => {
     }
 });
 
+// Temporary public discussion seed endpoint (remove after seeding production)
+app.post("/api/seed-discussions", async (req: Request, res: Response) => {
+    try {
+        const { seedDiscussions } = await import("./seeds/discussion.seed");
+        await seedDiscussions();
+        res.json({ message: "Discussion data seeded successfully" });
+    } catch (error) {
+        console.error("Seed error:", error);
+        res.status(500).json({ message: "Error seeding discussion data", error });
+    }
+});
+
+// Temporary public material seed endpoint (remove after seeding production)
+app.post("/api/seed-materials", async (req: Request, res: Response) => {
+    try {
+        const { seedMaterials } = await import("./seeds/material.seed");
+        await seedMaterials();
+        res.json({ message: "Study material data seeded successfully" });
+    } catch (error) {
+        console.error("Seed error:", error);
+        res.status(500).json({ message: "Error seeding study material data", error });
+    }
+});
+
 // ==================== API ROUTES ====================
 // Authentication & Users
 app.use("/api/auth", authRoutes);
