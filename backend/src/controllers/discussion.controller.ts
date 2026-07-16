@@ -23,10 +23,10 @@ export class DiscussionController {
             console.log('User role:', req.user.role);
             
             const { name, description, scope, targetId, departmentId, batchId, sectionId, isPublic } = req.body;
-            
-            if (req.user.role !== 'COORDINATOR') {
-                return res.status(403).json({ success: false, message: "Only Coordinators can create discussion groups." });
-            }
+
+            // Allow all authenticated users to create groups
+            // Students can create groups for their section/batch/department
+            // Admins, Super Admins, and Coordinators can create any group
             
             if (!name) {
                 return res.status(400).json({ 

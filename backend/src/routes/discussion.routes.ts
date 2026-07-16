@@ -11,8 +11,8 @@ const router = Router();
 // All routes require authentication
 router.use(authenticateJWT);
 
-// Groups - Admin and Coordinator only for creation and deletion
-router.post("/groups", authorizeRoles(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.COORDINATOR), validate(groupSchema), DiscussionController.createGroup);
+// Groups - All authenticated users can create, only admins/coordinators can delete
+router.post("/groups", validate(groupSchema), DiscussionController.createGroup);
 router.delete("/groups/:groupId", authorizeRoles(UserRole.ADMIN, UserRole.SUPER_ADMIN, UserRole.COORDINATOR), DiscussionController.deleteGroup);
 router.get("/groups", DiscussionController.getGroups);
 

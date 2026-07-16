@@ -20,19 +20,22 @@ export class MaterialController {
 
             const { departmentId, batchId, sectionId, isPublic } = req.body;
 
-            if (req.user.role !== 'COORDINATOR') {
-                return res.status(403).json({ message: "Only Coordinators can upload materials." });
-            }
+            // Allow all authenticated users to upload materials
+            // Admins, Super Admins, and Coordinators can upload to any scope
+            // Students can upload to their own section/batch/department
 
-            const validationResult = await validateCoordinatorTarget(req.user, {
-                departmentId: departmentId || null,
-                batchId: batchId || null,
-                sectionId: sectionId || null,
-                isPublic: isPublic
-            });
+            // Only validate coordinator target if user is a coordinator
+            if (req.user.role === 'COORDINATOR') {
+                const validationResult = await validateCoordinatorTarget(req.user, {
+                    departmentId: departmentId || null,
+                    batchId: batchId || null,
+                    sectionId: sectionId || null,
+                    isPublic: isPublic
+                });
 
-            if (!validationResult.valid) {
-                return res.status(403).json({ message: validationResult.message });
+                if (!validationResult.valid) {
+                    return res.status(403).json({ message: validationResult.message });
+                }
             }
 
             const material = materialRepository.create({
