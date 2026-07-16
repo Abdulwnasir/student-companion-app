@@ -146,6 +146,11 @@ class _DiscussionGroupListPageState extends State<DiscussionGroupListPage> {
           );
         },
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => _showCreateGroupDialog(context),
+        backgroundColor: AppTheme.primary,
+        child: const Icon(Icons.add, color: Colors.white),
+      ),
     );
   }
 
